@@ -1,0 +1,1 @@
+export { FormConfigComponent } from './formconfig';

@@ -1,0 +1,18 @@
+{
+  "title": "title ",
+  "items": [
+    { "label": "count", "type": "numberfield" },
+    { "label": "textaea", "type": "textarea" },
+    { "label": "text tyt bydet", "type": "textfield" },
+    { "label": "text tyt bydet", "type": "checkbox" },
+    { "label": "current date", "type": "datefield" },
+    {
+      "label": "current radios",
+      "type": "radio",
+      "radios": [{ "label": "first" }, { "label": "second" }]
+    },
+    { "label": "apply", "type": "button" },
+    { "label": "save", "type": "button" },
+    { "label": "cancel", "type": "button" }
+  ]
+}
