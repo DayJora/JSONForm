@@ -34,7 +34,7 @@ export const FormConfigComponent: FC<IConfigProps> = ({ callback }) => {
     <E.Wrapper>
       <E.Form onSubmit={submitHandler}>
         <E.Content value={content} onChange={changeContentHandler} cols={30} rows={20} />
-        {isValid !== null && !isValid && <E.Error>JSON NOT VALID</E.Error>}
+        {!isValid && <E.Error>JSON NOT VALID</E.Error>}
         <E.ButtonSubmit type="submit">Apply</E.ButtonSubmit>
       </E.Form>
     </E.Wrapper>
