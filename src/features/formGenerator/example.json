@@ -11,6 +11,16 @@
       "type": "radio",
       "radios": [{ "label": "first" }, { "label": "second" }]
     },
+    {
+      "label": "current radios",
+      "type": "radio",
+      "radios": [{ "label": "first" }, { "label": "second" }]
+    },
+    {
+      "label": "current radios",
+      "type": "radio",
+      "radios": [{ "label": "first" }, { "label": "second" }]
+    },
     { "label": "apply", "type": "button" },
     { "label": "save", "type": "button" },
     { "label": "cancel", "type": "button" }

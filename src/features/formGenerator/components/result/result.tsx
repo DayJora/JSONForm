@@ -22,28 +22,28 @@ export const ResultComponent: FC<IResultProps> = ({ data }) => {
     d.type === 'button' ? buttons.push(d) : elements.push(d);
   });
 
-  const getElementView = (el: TItem, i: number) => {
+  const getElementView = (el: TItem) => {
     switch (el.type) {
       case 'numberfield':
-        return <NumberFieldView key={i} {...el} />;
+        return <NumberFieldView {...el} />;
 
       case 'textfield':
-        return <TextFieldView key={i} {...el} />;
+        return <TextFieldView {...el} />;
 
       case 'textarea':
-        return <TextAreaView key={i} {...el} />;
+        return <TextAreaView {...el} />;
 
       case 'checkbox':
-        return <CheckboxView key={i} {...el} />;
+        return <CheckboxView {...el} />;
 
       case 'datefield':
-        return <DateFieldView key={i} {...el} />;
+        return <DateFieldView {...el} />;
 
       case 'radio':
-        return <RadiosView key={i} {...el} />;
+        return <RadiosView {...el} />;
 
       case 'button':
-        return <ButtonView key={i} {...el} />;
+        return <ButtonView {...el} />;
 
       default:
         break;
@@ -54,10 +54,16 @@ export const ResultComponent: FC<IResultProps> = ({ data }) => {
     <E.Wrapper>
       <E.Block>
         {data.title && <E.Title>{data.title}</E.Title>}
-        {elements.map((e, i) => getElementView(e, i))}
+        {elements.map((e, i) => (
+          <React.Fragment key={i}>{getElementView(e)}</React.Fragment>
+        ))}
       </E.Block>
       {buttons.length > 0 && (
-        <E.ButtonsBlock>{buttons.map((e, i) => getElementView(e, i))}</E.ButtonsBlock>
+        <E.ButtonsBlock>
+          {buttons.map((e, i) => (
+            <React.Fragment key={i}>{getElementView(e)}</React.Fragment>
+          ))}
+        </E.ButtonsBlock>
       )}
     </E.Wrapper>
   );

@@ -1,6 +1,6 @@
-import React, { FC, useState, useEffect, useLayoutEffect } from 'react';
+import React, { FC, useState, useLayoutEffect } from 'react';
 import * as E from './elements';
-import { getValidation } from './validation';
+import { validate } from './validation';
 import { IJSON } from './types';
 
 interface IConfigProps {
@@ -9,22 +9,20 @@ interface IConfigProps {
 
 export const FormConfigComponent: FC<IConfigProps> = ({ callback }) => {
   const [content, setContent] = useState(() => localStorage.getItem('formConfig') ?? '');
-  const [isValid, setValid] = useState<boolean | null>(null);
+  const [isValid, setValid] = useState<boolean>(true);
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setValid(getValidation(content));
+
+    const currentContentIsValid = validate(JSON.parse(content));
+    setValid(currentContentIsValid);
+    if (currentContentIsValid) {
+      callback(JSON.parse(content) as IJSON);
+    }
   };
 
   const changeContentHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
     setContent(e.currentTarget.value);
-
-  useEffect(() => {
-    if (isValid) {
-      callback(JSON.parse(content) as IJSON);
-      setValid(null);
-    }
-  }, [isValid]);
 
   useLayoutEffect(() => {
     return () => {
